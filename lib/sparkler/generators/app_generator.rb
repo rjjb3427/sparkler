@@ -5,6 +5,7 @@ module Sparkler
   class AppGenerator < Rails::Generators::AppGenerator
     class_option :skip_test_unit, type: :boolean, aliases: '-T', default: true, desc: 'Skip Test::Unit files'
     class_option :database, type: :string, aliases: '-d', default: 'postgresql', desc: "Preconfigure for selected database (options: #{DATABASES.join('/')})"
+    class_option :local_database, type: :boolean, aliases: '--local-database', default: false, desc: "Create a pg folder in the application"
 
     def finish_template
       invoke :sparkler_customization
@@ -13,6 +14,7 @@ module Sparkler
 
     def sparkler_customization
       invoke :customize_gemfile
+      invoke :setup_database
       invoke :remove_useless_files
       invoke :remove_routes_comment_lines
       invoke :setup_staging_environment
@@ -28,6 +30,14 @@ module Sparkler
     def remove_useless_files
       build :remove_public_index
       build :remove_rails_logo_image
+    end
+
+    def setup_database
+      if 'postgresql' == options[:database]
+        build :use_postgres_config_template
+        build :setup_local_postgres if options[:local_database]
+      end
+      build :create_database
     end
 
     def setup_staging_environment
@@ -62,6 +72,7 @@ module Sparkler
       say 'Initalizing git repo'
       build :setup_gitignore
       build :init_git
+      build :ignore_local_postgres if options[:local_database]
     end
 
     def copy_miscellaneous_files

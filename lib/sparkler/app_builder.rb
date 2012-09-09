@@ -40,6 +40,24 @@ module Sparkler
       inject_into_file 'Gemfile', "\n#{asset_gems}", after: /gem 'uglifier'.*$/
     end
 
+    def use_postgres_config_template
+      template 'database.yml.erb', 'config/database.yml', force: true
+    end
+
+    def setup_local_postgres
+      run 'initdb pg'
+    end
+
+    def ignore_local_postgres
+      append_file '.git/info/exclude', '/pg/'
+    end
+
+    def create_database
+      pid = fork { exec 'postgres', '-D', 'pg' }
+      bundle_command 'exec rake db:create'
+      Process.kill "INT", pid
+    end
+
     def setup_gitignore
       gitignore_file = find_in_source_paths('gitignore_additions')
       gitignore = File.open(gitignore_file).read
