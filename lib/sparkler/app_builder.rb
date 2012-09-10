@@ -24,7 +24,7 @@ module Sparkler
 
     def create_application_layout
       remove_file 'app/views/layouts/application.html.erb'
-      template 'application_layout.html.haml', 'app/views/layouts/application.html.haml', force: true
+      copy_file 'application_layout.html.haml', 'app/views/layouts/application.html.haml', force: true
     end
 
     def add_custom_gems
