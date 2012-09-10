@@ -70,7 +70,7 @@ module Sparkler
 
     def copy_miscellaneous_files
       copy_file 'time_formats.rb', 'config/initializers/time_formats.rb'
-      copy_file 'Procfile'
+      template 'Procfile', 'Procfile'
     end
 
     def setup_high_voltage
