@@ -36,8 +36,8 @@ module Sparkler
       if 'postgresql' == options[:database]
         build :use_postgres_config_template
         build :setup_local_postgres if options[:local_database]
+        build :create_database
       end
-      build :create_database
     end
 
     def setup_staging_environment
