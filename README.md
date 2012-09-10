@@ -4,6 +4,8 @@ Spin up a Rails app using all the tools and frameworks we like at [Gaslight][].
 Inspired heavily by [thoughtbot](http://thoughtbot.com)'s
 [Suspenders](https://github.com/thoughtbot/suspenders).
 
+<a href="http://www.flickr.com/photos/blackmanvision/2601602513/" title="Sparklers by BlackmanVision, on Flickr"><img src="http://farm4.staticflickr.com/3229/2601602513_f9c989ac0a.jpg" width="500" height="333" alt="Sparklers"></a>
+
 You'll get stuff like:
 
 * [Haml](http://haml.info/)
