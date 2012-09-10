@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Chris Moore"]
   gem.email         = ["chrism@gaslightsoftware.com"]
   gem.summary       = %q{Generate a Rails app using Gaslight's choices of gems and frameworks.}
-  gem.description   = %q{}
+  gem.description   = %q{Spin up a Rails app using all the tools and frameworks we like at Gaslight. Inspired heavily by thoughtbot's Suspenders.}
   gem.homepage      = "https://github.com/gaslight/sparkler"
 
   gem.files         = `git ls-files`.split($\)
