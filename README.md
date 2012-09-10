@@ -27,6 +27,10 @@ you ask? Well your app becomes totally independent, first of all. In addition,
 when you use a tool like Foreman, PG's logs are output right along with your
 other services. It's pretty nice having all app specific output in one place.
 
+It's not my idea, by the way.
+
+![](http://cdmwebs.com/s/Peter_van_Hardenberg_%28pvh%29_on_Twitter-20120909-215619.jpg)
+
 ## Installation
 
 Install the gem: `gem install sparkler`.
