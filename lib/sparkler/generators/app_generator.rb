@@ -4,7 +4,7 @@ require 'rails/generators/rails/app/app_generator'
 module Sparkler
   class AppGenerator < Rails::Generators::AppGenerator
     class_option :skip_test_unit, type: :boolean, aliases: '-T', default: true, desc: 'Skip Test::Unit files'
-    class_option :database, type: :string, aliases: '-d', default: 'postgresql', desc: "Preconfigure for selected database (options: #{DATABASES.join('/')})"
+    class_option :database, type: :string, aliases: '-d', default: 'sqlite3', desc: "Preconfigure for selected database (options: #{DATABASES.join('/')})"
     class_option :local_database, type: :boolean, aliases: '--local-database', default: false, desc: "Create a pg folder in the application"
 
     def finish_template
@@ -34,10 +34,13 @@ module Sparkler
     end
 
     def setup_database
-      if 'postgresql' == options[:database]
+      if options[:database] == 'postgresql'
         build :use_postgres_config_template
         build :setup_local_postgres if options[:local_database]
-        build :create_database
+        build :create_postgres_database
+      elsif options[:database] == 'sqlite3'
+        build :use_sqlite_config_template
+        build :create_sqlite_database
       end
     end
 

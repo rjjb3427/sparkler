@@ -40,8 +40,12 @@ module Sparkler
       inject_into_file 'Gemfile', "\n#{asset_gems}", after: /gem 'uglifier'.*$/
     end
 
+    def use_sqlite_config_template
+      template 'database.sqlite.yml.erb', 'config/database.yml', force: true
+    end
+
     def use_postgres_config_template
-      template 'database.yml.erb', 'config/database.yml', force: true
+      template 'database.postgres.yml.erb', 'config/database.yml', force: true
     end
 
     def setup_local_postgres
@@ -52,10 +56,14 @@ module Sparkler
       append_file '.git/info/exclude', '/pg/'
     end
 
-    def create_database
+    def create_postgres_database
       pid = fork { exec 'postgres', '-D', 'pg' }
       bundle_command 'exec rake db:create'
       Process.kill "INT", pid
+    end
+
+    def create_sqlite_database
+      bundle_command 'exec rake db:create'
     end
 
     def setup_gitignore
