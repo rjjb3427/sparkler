@@ -30,7 +30,7 @@ module Sparkler
     def add_custom_gems
       additions_path = find_in_source_paths 'Gemfile_additions'
       new_gems = File.open(additions_path).read
-      inject_into_file 'Gemfile', "\n#{new_gems}", after: /gem 'jquery-rails'/
+      inject_into_file 'Gemfile', "\n#{new_gems}", after: /gem 'rails'.*$/
 
       asset_gems = <<-END.gsub(/^  {6}/, '')
          gem 'compass-rails', '~> 1.0.3'
