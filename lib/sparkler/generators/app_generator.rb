@@ -13,6 +13,7 @@ module Sparkler
     end
 
     def sparkler_customization
+      invoke :configure_generators
       invoke :customize_gemfile
       invoke :setup_database
       invoke :remove_useless_files
@@ -66,6 +67,11 @@ module Sparkler
       build :add_custom_gems
       bundle_command 'install --binstubs --path vendor'
       bundle_command 'package'
+    end
+
+    def configure_generators
+      say 'Configuring generators'
+      build :configure_generators
     end
 
     def setup_git

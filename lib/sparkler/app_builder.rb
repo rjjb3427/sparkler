@@ -101,17 +101,19 @@ module Sparkler
       copy_file 'cucumber_javascript.rb', 'features/support/javascript.rb'
     end
 
-    def configure_rspec
-      generators_config = <<-RUBY.gsub(/^   {6}/, '')
+    def configure_generators
+      generators_config = <<-RUBY.gsub(/^   {2}/, '')
         config.generators do |generate|
-          generate.test_framework :rspec
-          generate.helper false
-          generate.stylesheets false
-          generate.javascript_engine false
-          generate.view_specs false
-        end
+          generate.helper              false
+          generate.assets              false
+          generate.view_specs          false
+        end\n
       RUBY
       inject_into_class 'config/application.rb', 'Application', generators_config
+    end
+
+    def configure_rspec
+      inject_into_file 'config/application.rb', "      generate.test_framework      :rspec\n", after: "config.generators do |generate|\n"
       generate 'rspec:install'
     end
   end
