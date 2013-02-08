@@ -57,6 +57,11 @@ Install the gem: `gem install sparkler`.
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
 
+## License
+
+sparkler is Copyright © 2008-2013 Gaslight. It is free software, and may be redistributed under
+the terms specified in the LICENSE file.
+
 [Gaslight]: http://gaslightsoftware.com
 [Vendor Everything]: http://ryan.mcgeary.org/2011/02/09/vendor-everything-still-applies/
 [RDiscount]: https://github.com/rtomayko/rdiscount
