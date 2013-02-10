@@ -5,7 +5,7 @@ module Sparkler
   class AppGenerator < Rails::Generators::AppGenerator
     class_option :skip_test_unit, type: :boolean, aliases: '-T', default: true, desc: 'Skip Test::Unit files'
     class_option :database, type: :string, aliases: '-d', default: 'sqlite3', desc: "Preconfigure for selected database (options: #{DATABASES.join('/')})"
-    class_option :local_database, type: :boolean, aliases: '--local-database', default: false, desc: "Create a pg folder in the application"
+    class_option :local_database, type: :boolean, aliases: '-D', default: false, desc: "Create a pg folder in the application"
 
     def finish_template
       invoke :sparkler_customization
