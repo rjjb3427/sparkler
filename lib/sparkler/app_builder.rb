@@ -34,7 +34,7 @@ module Sparkler
 
       asset_gems = <<-END.gsub(/^  {6}/, '')
          gem 'compass-rails', '~> 1.0.3'
-         gem 'zurb-foundation', '~> 3.0.9'
+         gem 'zurb-foundation'
       END
 
       inject_into_file 'Gemfile', "\n#{asset_gems}", after: /gem 'uglifier'.*$/
