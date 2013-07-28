@@ -32,9 +32,9 @@ module Sparkler
       new_gems = File.open(additions_path).read
       inject_into_file 'Gemfile', "\n#{new_gems}", after: /gem 'sqlite3'/
 
-      asset_gems = <<-END.gsub(/^  {6}/, '')
-         gem 'compass-rails', '~> 1.0.3'
+      asset_gems = <<-END.gsub(/^  {4}/, '')
          gem 'zurb-foundation'
+         gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427e7969810457213647fb8'
       END
 
       inject_into_file 'Gemfile', "\n#{asset_gems}", after: /gem 'uglifier'.*$/
@@ -42,10 +42,12 @@ module Sparkler
 
     def use_sqlite_config_template
       template 'database.sqlite.yml.erb', 'config/database.yml', force: true
+      template 'database.sqlite.yml.erb', 'config/database.example.yml', force: true
     end
 
     def use_postgres_config_template
       template 'database.postgres.yml.erb', 'config/database.yml', force: true
+      template 'database.postgres.yml.erb', 'config/database.example.yml', force: true
     end
 
     def setup_local_postgres
@@ -88,7 +90,7 @@ module Sparkler
     end
 
     def setup_foundation
-      generate 'foundation:install'
+      generate 'foundation:install --skip'
     end
 
     def add_foundation_to_application
@@ -100,13 +102,19 @@ module Sparkler
       copy_file 'env', '.env'
     end
 
-    def remove_routes_comment_lines
-      replace_in_file 'config/routes.rb', /Application\.routes\.draw do.*end/m, "Application.routes.draw do\nend"
+    def setup_sentry
+      copy_file 'raven.rb', 'config/initializers/raven.rb'
     end
 
-    def generate_cucumber
-      generate 'cucumber:install', '--rspec', '--capybara'
-      copy_file 'cucumber_javascript.rb', 'features/support/javascript.rb'
+    def setup_scripts
+      %w(bootstrap data).each do |file|
+        copy_file file, "script/#{file}"
+        chmod "script/#{file}", 0755
+      end
+    end
+
+    def remove_routes_comment_lines
+      replace_in_file 'config/routes.rb', /Application\.routes\.draw do.*end/m, "Application.routes.draw do\nend"
     end
 
     def configure_generators

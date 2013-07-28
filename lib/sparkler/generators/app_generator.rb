@@ -22,10 +22,11 @@ module Sparkler
       invoke :create_views_and_layouts
       invoke :copy_miscellaneous_files
       invoke :setup_foundation
+      invoke :setup_sentry
       invoke :setup_env
-      invoke :setup_cucumber
       invoke :setup_rspec
       invoke :setup_git
+      invoke :setup_scripts
     end
 
     def remove_useless_files
@@ -53,7 +54,6 @@ module Sparkler
       say 'Creating layouts and partials'
       build :create_partials_directory
       build :create_shared_flashes
-      build :create_application_layout
 
       say 'Setting up High Voltage and a home page'
       build :setup_high_voltage
@@ -63,12 +63,18 @@ module Sparkler
       say 'Generating Foundation'
       build :setup_foundation
       build :add_foundation_to_application
+      build :create_application_layout
+    end
+
+    def setup_sentry
+      say 'Configuring Sentry'
+      build :setup_sentry
     end
 
     def customize_gemfile
       say 'Setting up gems and bundling'
       build :add_custom_gems
-      bundle_command 'install --binstubs --path vendor'
+      bundle_command 'install --path vendor'
       bundle_command 'package'
     end
 
@@ -84,6 +90,11 @@ module Sparkler
       build :ignore_local_postgres if options[:local_database]
     end
 
+    def setup_scripts
+      say 'Adding convenience scripts'
+      build :setup_scripts
+    end
+
     def copy_miscellaneous_files
       say 'Copying miscellaneous support files'
       build :copy_miscellaneous_files
@@ -92,12 +103,6 @@ module Sparkler
     def setup_env
       say 'Adding an .env file'
       build :add_env_from_template
-    end
-
-    def setup_cucumber
-      say 'Installing and configuring Cucumber'
-      build :generate_cucumber
-      say "Don't forget to install chromedriver if you haven't already."
     end
 
     def setup_rspec
