@@ -62,7 +62,7 @@ Install the gem: `gem install sparkler`.
 sparkler is Copyright © 2008-2013 Gaslight. It is free software, and may be redistributed under
 the terms specified in the LICENSE file.
 
-[Gaslight]: http://gaslightsoftware.com
+[Gaslight]: http://gaslight.co
 [Vendor Everything]: http://ryan.mcgeary.org/2011/02/09/vendor-everything-still-applies/
 [RDiscount]: https://github.com/rtomayko/rdiscount
 [High Voltage]: https://github.com/thoughtbot/high_voltage
