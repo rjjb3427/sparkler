@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.version       = Sparkler::VERSION
   gem.date          = Date.today.strftime('%Y-%m-%d')
   gem.authors       = ["Chris Moore"]
-  gem.email         = ["chrism@gaslightsoftware.com"]
+  gem.email         = ["chrism@gaslight.co"]
   gem.summary       = %q{Generate a Rails app using Gaslight's choices of gems and frameworks.}
   gem.description   = %q{Spin up a Rails app using all the tools and frameworks we like at Gaslight. Inspired heavily by thoughtbot's Suspenders.}
   gem.homepage      = "https://github.com/gaslight/sparkler"
