@@ -4,7 +4,7 @@ require File.expand_path('../lib/sparkler/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.name          = "sparkler"
   gem.version       = Sparkler::VERSION
-  gem.date          = Date.today.strftime('%Y-%m-%d')
+  gem.date          = Time.now.strftime('%Y-%m-%d')
   gem.authors       = ["Chris Moore"]
   gem.email         = ["chrism@gaslight.co"]
   gem.summary       = %q{Generate a Rails app using Gaslight's choices of gems and frameworks.}
