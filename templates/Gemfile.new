@@ -6,7 +6,6 @@ gem 'sqlite3'
 
 gem 'haml-rails'
 gem 'high_voltage', ">= 1.2.0"
-gem 'rdiscount'
 gem 'sentry-raven'
 
 gem 'sass-rails', '~> 4.0.0'

@@ -16,7 +16,6 @@ You'll get stuff like:
 * [Foreman](http://ddollar.github.com/foreman/) setup using
   [dotenv](https://github.com/bkeepers/dotenv)
 * [High Voltage][] (for static pages)
-* [RDiscount][] (for Markdown)
 * A staging environment.
 * An application layout rendering flash messages of any key/value.
 * A responsive layout using HTML5.
