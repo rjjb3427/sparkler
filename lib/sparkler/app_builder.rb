@@ -129,5 +129,9 @@ module Sparkler
       inject_into_file 'config/application.rb', "      generate.test_framework      :rspec\n", after: "config.generators do |generate|\n"
       generate 'rspec:install'
     end
+
+    def use_spring_binstubs
+      run 'bundle exec spring binstub --all'
+    end
   end
 end

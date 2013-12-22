@@ -27,6 +27,8 @@ group :development, :test do
   gem 'debugger'
   gem 'rspec-rails'
   gem 'dotenv-rails'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :test do

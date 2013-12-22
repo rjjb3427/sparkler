@@ -28,6 +28,7 @@ module Sparkler
       invoke :setup_rspec
       invoke :setup_git
       invoke :setup_scripts
+      invoke :setup_spring
     end
 
     def use_coffeescript
@@ -98,6 +99,11 @@ module Sparkler
     def setup_scripts
       say 'Adding convenience scripts'
       build :setup_scripts
+    end
+
+    def setup_spring
+      say 'Setting up Spring binstubs'
+      build :use_spring_binstubs
     end
 
     def copy_miscellaneous_files
