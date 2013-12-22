@@ -10,6 +10,11 @@ module Sparkler
       remove_file 'app/assets/images/rails.png'
     end
 
+    def use_coffeescript
+      remove_file 'app/assets/javascripts/application.js'
+      directory 'javascripts', 'app/assets/javascripts'
+    end
+
     def setup_staging_environment
       run 'cp config/environments/production.rb config/environments/staging.rb'
     end

@@ -22,11 +22,16 @@ module Sparkler
       invoke :create_views_and_layouts
       invoke :copy_miscellaneous_files
       invoke :setup_foundation
+      invoke :use_coffeescript
       invoke :setup_sentry
       invoke :setup_env
       invoke :setup_rspec
       invoke :setup_git
       invoke :setup_scripts
+    end
+
+    def use_coffeescript
+      build :use_coffeescript
     end
 
     def remove_useless_files
