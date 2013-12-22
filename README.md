@@ -13,7 +13,6 @@ You'll get stuff like:
 * [Compass](http://compass-style.org)
 * [ZURB's Foundation](http://foundation.zurb.com/)
 * [Rspec](https://www.relishapp.com/rspec)
-* [Puma](http://puma.io/)
 * [Foreman](http://ddollar.github.com/foreman/) setup using
   [dotenv](https://github.com/bkeepers/dotenv)
 * [High Voltage][] (for static pages)
