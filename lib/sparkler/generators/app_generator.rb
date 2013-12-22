@@ -73,7 +73,7 @@ module Sparkler
 
     def customize_gemfile
       say 'Setting up gems and bundling'
-      build :add_custom_gems
+      build :gemfile
       bundle_command 'install --path vendor'
       bundle_command 'package'
     end

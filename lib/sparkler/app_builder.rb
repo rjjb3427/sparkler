@@ -27,17 +27,9 @@ module Sparkler
       copy_file 'application_layout.html.haml', 'app/views/layouts/application.html.haml', force: true
     end
 
-    def add_custom_gems
-      additions_path = find_in_source_paths 'Gemfile_additions'
-      new_gems = File.open(additions_path).read
-      inject_into_file 'Gemfile', "\n#{new_gems}", after: /gem 'sqlite3'/
-
-      asset_gems = <<-END.gsub(/^  {4}/, '')
-         gem 'zurb-foundation'
-         gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427e7969810457213647fb8'
-      END
-
-      inject_into_file 'Gemfile', "\n#{asset_gems}", after: /gem 'uglifier'.*$/
+    def gemfile
+      remove_file 'Gemfile'
+      copy_file 'Gemfile.new', 'Gemfile'
     end
 
     def use_sqlite_config_template
