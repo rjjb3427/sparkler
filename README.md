@@ -14,7 +14,7 @@ You'll get stuff like:
 * [ZURB's Foundation](http://foundation.zurb.com/)
 * [Rspec](https://www.relishapp.com/rspec)
 * [Foreman](http://ddollar.github.com/foreman/) setup using
-  [dotenv](https://github.com/bkeepers/dotenv)
+  [dotenv](https://github.com/bkeepers/dotenv-rails)
 * [High Voltage][] (for static pages)
 * A staging environment.
 * An application layout rendering flash messages of any key/value.
